@@ -8,7 +8,7 @@ export function RotatingLogo() {
   const isMobile = useIsMobile();
 
   const size = useMemo(() => {
-    return isMobile ? 300 : 600;
+    return isMobile ? 800 : 1600;
   }, [isMobile]);
 
   return (
