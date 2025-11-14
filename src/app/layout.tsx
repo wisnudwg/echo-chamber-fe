@@ -2,11 +2,11 @@
 // import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { Navbar } from "../components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Provider } from "react-redux";
 import reduxStore from "@/lib/Redux/ReduxStore";
 import { Toaster } from "@/components/ui/toaster";
+import Head from "next/head";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,9 +26,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
+      <Head>
         <title>Social Media App</title>
-      </head>
+        <link rel="icon" href="/icon.png" type="image/png" />
+      </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider
@@ -37,8 +38,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange>
           <Provider store={reduxStore}>
-            <Navbar />
-            <div className="container md:mt-16 mt-2">{children}</div>
+            {/* <Navbar /> */}
+            <div className="">{children}</div>
             <Toaster />
           </Provider>
         </ThemeProvider>
