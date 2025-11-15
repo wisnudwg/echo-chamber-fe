@@ -30,7 +30,7 @@ export default function Layout({ children }: {
         <Logo animated colored direction="reverse" size={size} />
       </div>
       <Center className="">
-        <div className="z-10">
+        <div className="">
           {children}
         </div>
       </Center>

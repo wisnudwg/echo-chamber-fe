@@ -9,7 +9,7 @@ export default function Layout({ children }: {
     <main className="bg-zinc-950 w-screen h-screen relative overflow-hidden">
       <RotatingLogo />
       <Center className="backdrop-blur-sm lg:backdrop-blur-md">
-        <div className="z-10">
+        <div className="">
           {children}
         </div>
       </Center>
