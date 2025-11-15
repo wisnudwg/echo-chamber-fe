@@ -14,6 +14,7 @@ import Link from "next/link"
 import { Group } from "../group"
 import { FormFieldErrorMessage } from "../form-field-error-message"
 import { useRouter } from "next/navigation"
+import { promiseDelay } from "@/lib/utils"
 
 export function EnlistForm() {
   const router = useRouter();
@@ -35,13 +36,14 @@ export function EnlistForm() {
         variant: "default",
         description: "Enlisting...",
       });
-      setTimeout(() => {
-        toast({
-          variant: "default",
-          description: "You are now enlisted and will be redirected to the system's entry point..."
+      promiseDelay(2000)
+        .then(() => {
+          toast({
+            variant: "default",
+            description: "You are now enlisted and will be redirected to the system's entry point..."
+          });
+          router.push("/entry");
         });
-        router.push("/entry");
-      }, 2000)
     }
   )
 

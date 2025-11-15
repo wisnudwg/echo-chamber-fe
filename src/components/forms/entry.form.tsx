@@ -14,6 +14,7 @@ import Link from "next/link"
 import { Group } from "../group"
 import { FormFieldErrorMessage } from "../form-field-error-message"
 import { useRouter } from "next/navigation"
+import { promiseDelay } from "@/lib/utils"
 
 export function EntryForm() {
   const router = useRouter();
@@ -33,9 +34,10 @@ export function EntryForm() {
         variant: "default",
         description: "Trying to grant entry...",
       });
-      setTimeout(() => {
-        router.push("/entering");
-      }, 2000)
+      promiseDelay(2000)
+        .then(() => {
+          router.push("/entering");
+        });
     }
   )
 
