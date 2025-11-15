@@ -13,8 +13,11 @@ import { toast } from "@/hooks/use-toast"
 import Link from "next/link"
 import { Group } from "../group"
 import { FormFieldErrorMessage } from "../form-field-error-message"
+import { useRouter } from "next/navigation"
 
 export function EntryForm() {
+  const router = useRouter();
+  
   const { register, handleSubmit, formState: { errors } } = useForm<EntryFormSchemaType>({
     defaultValues: {
       entity_id: "",
@@ -29,7 +32,10 @@ export function EntryForm() {
       toast({
         variant: "default",
         description: "Trying to grant entry...",
-      })
+      });
+      setTimeout(() => {
+        router.push("/entering");
+      }, 2000)
     }
   )
 

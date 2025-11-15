@@ -24,13 +24,15 @@ const scale = {
   layer5: 100/500,
 }
 
-export function Logo({ animated=false, colored=false, size=64}: {
+export function Logo({ animated=false, colored=false, direction="normal", size=64, speed=15 }: {
   animated?: boolean;
   colored?: boolean;
+  direction?: "normal" | "reverse";
   size?: number;
+  speed?: number;
 }) {
   if (animated && colored) return (
-    <div className="relative" style={{ width: size, height: size, animation: "spin 15s linear infinite" }}>
+    <div className="relative" style={{ width: size, height: size, animation: `spin ${speed}s linear infinite`, animationDirection: direction }}>
       <Image src={logo_color_layer_1} alt="logo-color-layer-1" style={{ width: size * scale.layer1 }} />
       <Image src={logo_color_layer_2} alt="logo-color-layer-2" style={{ width: size * scale.layer2 }} className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]" />
       <Image src={logo_color_layer_3} alt="logo-color-layer-3" style={{ width: size * scale.layer3 }} className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]" />
@@ -40,7 +42,7 @@ export function Logo({ animated=false, colored=false, size=64}: {
   )
 
   if (animated && !colored) return (
-    <div className="relative" style={{ width: size, height: size, animation: "spin 15s linear infinite" }}>
+    <div className="relative" style={{ width: size, height: size, animation: `spin ${speed}s linear infinite`, animationDirection: direction }}>
       <Image src={logo_transparent_layer_1} alt="logo-transparent-layer-1" style={{ width: size * scale.layer1 }} />
       <Image src={logo_transparent_layer_2} alt="logo-transparent-layer-2" style={{ width: size * scale.layer2 }} className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]" />
       <Image src={logo_transparent_layer_3} alt="logo-transparent-layer-3" style={{ width: size * scale.layer3 }} className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]" />
