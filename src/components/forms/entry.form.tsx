@@ -36,7 +36,7 @@ export function EntryForm() {
   return (
     <div className="text-white w-[80vw] lg:w-[400px]">
       <form onSubmit={onSubmit}>
-        <Stack className="gap-8 lg:gap-4">
+        <Stack className="gap-8 lg:gap-6">
           <Stack className="gap-1">
             <Label>Entity ID</Label>
             <Input
