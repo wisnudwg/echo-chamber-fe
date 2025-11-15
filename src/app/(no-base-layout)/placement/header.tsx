@@ -3,15 +3,17 @@
 import { Logo } from "@/components/logo"
 import { Button } from "@/components/ui/button"
 import { toast } from "@/hooks/use-toast";
-import { promiseDelay } from "@/lib/utils";
+import { cn, promiseDelay } from "@/lib/utils";
 import { LogOut } from "lucide-react";
 import { useRouter } from "next/navigation"
 
-export function Header() {
+export function Header({ className }: {
+  className?: string;
+}) {
   const router = useRouter();
 
   return (
-    <header className="sticky top-0 left-0 w-full flex flex-row items-center justify-between p-4">
+    <header className={cn(className)}>
       <div className="h-fit w-fit opacity-30">
         <Logo colored size={40} />
       </div>
