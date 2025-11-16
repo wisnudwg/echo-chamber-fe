@@ -29,14 +29,14 @@ export default function Page() {
             disabled={step === 1}
             label="Back"
             onClick={() => {
-              setStep((val) => val-1)
+              setStep((val) => val - 1)
             }}
           />
         )}
         <NextButton
           label={step === 3 ? "Phase 2" : "Next"}
           onClick={() => {
-            step === 3 ? router.push("/placement/phase-2") : setStep((val) => val+1)
+            step === 3 ? router.push("/placement/phase-2") : setStep((val) => val + 1)
           }}
         />
       </div>

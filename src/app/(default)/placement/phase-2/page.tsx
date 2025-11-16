@@ -19,13 +19,13 @@ export default function Page() {
         <PrevButton
           label={step === 1 ? "Phase 1" : "Back"}
           onClick={() => {
-            step === 1 ? router.push("/placement/phase-1") : setStep((val) => val-1)
+            step === 1 ? router.push("/placement/phase-1") : setStep((val) => val - 1)
           }}
         />
         <NextButton
           label={step === 3 ? "Phase 2" : "Next"}
           onClick={() => {
-            step === 3 ? router.push("/placement/phase-3") : setStep((val) => val+1)
+            step === 3 ? router.push("/placement/phase-3") : setStep((val) => val + 1)
           }}
         />
       </div>
