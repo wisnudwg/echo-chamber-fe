@@ -9,6 +9,7 @@ export type PlacementState = {
 export type PlacementAction = {
   setX: (x: number) => void;
   setY: (y: number) => void;
+  reset: () => void;
 }
 
 export type PlacementStore = PlacementAction & {
@@ -39,6 +40,13 @@ export const usePlacementStore = create<PlacementStore>()(
           state: {
             ...get().state,
             y,
+          },
+        })
+      },
+      reset: () => {
+        set({
+          state: {
+            ...iState,
           },
         })
       },

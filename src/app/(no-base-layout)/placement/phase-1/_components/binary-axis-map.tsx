@@ -38,7 +38,7 @@ export function BinaryAxisMap() {
   }, [isMobile]);
 
   const dotTranslation = useMemo(() => {
-    return isMobile ? -8 : -12;
+    return isMobile ? -6 : -9;
   }, [isMobile]);
 
   return (

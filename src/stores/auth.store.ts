@@ -9,6 +9,7 @@ export type AuthState = {
 
 export type AuthAction = {
   setState: (payload: Partial<AuthState>) => void;
+  reset: () => void;
 }
 
 type AuthStore = AuthAction & {
@@ -33,6 +34,13 @@ export const useAuthStore = create<AuthStore>()(
             ...get().state,
             ...payload,
           },
+        })
+      },
+      reset: () => {
+        set({
+          state: {
+            ...iState,
+          }
         })
       }
     }),
