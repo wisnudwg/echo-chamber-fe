@@ -21,7 +21,7 @@ export default function Page() {
             onClick={() => {
               router.push("/placement/phase-1");
             }}
-          >Please do!</Button>
+          >No, not at all!</Button>
         </div>
       </Center>
     </div>

@@ -1,21 +1,17 @@
-"use client"
+import { Fragment } from "react";
+import { EnteringHandler } from "../_components/handlers";
+import { Metadata } from "next";
+import { APP_NAME } from "@/lib/constants";
 
-import { promiseDelay } from "@/lib/utils";
-import { useRouter } from "next/navigation"
-import { Fragment, useEffect } from "react"
+export const metadata: Metadata = {
+  title: `${APP_NAME}: Entering`,
+  description: "",
+}
 
 export default function Page() {
-  const router = useRouter();
-
-  useEffect(() => {
-    promiseDelay(5000)
-      .then(() => {
-        router.push("/placement");
-      });
-  }, []);
-
   return (
     <Fragment>
+      <EnteringHandler />
       <span>Nobody forced you to be here</span>
       <span>You chose to be here</span>
     </Fragment>

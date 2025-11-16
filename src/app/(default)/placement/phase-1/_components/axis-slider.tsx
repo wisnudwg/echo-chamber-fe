@@ -1,9 +1,9 @@
 "use client"
 
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Slider } from "@/components/ui/slider"
+import { Slider } from "@/components/ui/slider";
 import { cn } from "@/lib/utils";
-import { usePlacementStore } from "@/stores/placement.store"
+import { usePlacementStore } from "@/stores/placement.store";
 import { QuestionMarkCircledIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";

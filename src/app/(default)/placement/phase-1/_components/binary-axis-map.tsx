@@ -2,7 +2,7 @@
 
 import { useIsMobile } from "@/hooks";
 import { cn } from "@/lib/utils";
-import { usePlacementStore } from "@/stores/placement.store"
+import { usePlacementStore } from "@/stores/placement.store";
 import { useMemo } from "react";
 
 export function BinaryAxisMap() {

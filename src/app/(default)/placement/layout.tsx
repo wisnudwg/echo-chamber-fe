@@ -1,5 +1,12 @@
 import { ReactNode } from "react";
 import { Header } from "./_components/header";
+import { Metadata } from "next";
+import { APP_NAME } from "@/lib/constants";
+
+export const metadata: Metadata = {
+  title: `${APP_NAME}: Placement`,
+  description: "",
+}
 
 export default function Layout({ children }: {
   children: ReactNode;

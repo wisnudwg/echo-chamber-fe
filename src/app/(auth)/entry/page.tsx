@@ -1,6 +1,6 @@
-import { EntryForm } from "@/components/forms/entry.form"
-import { APP_NAME } from "@/lib/constants"
-import { Metadata } from "next"
+import { EntryForm } from "@/components/forms/entry.form";
+import { APP_NAME } from "@/lib/constants";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: `${APP_NAME}: Entry`,

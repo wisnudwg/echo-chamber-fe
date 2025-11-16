@@ -1,0 +1,19 @@
+"use client"
+
+import { Logo } from "@/components/logo";
+import { useIsMobile } from "@/hooks";
+import { useMemo } from "react";
+
+export function RotatingLogo() {
+  const isMobile = useIsMobile();
+
+  const size = useMemo(() => {
+    return isMobile ? 600 : 1200;
+  }, [isMobile]);
+  
+  return (
+    <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+      <Logo animated colored direction="reverse" size={size} />
+    </div>
+  )
+}

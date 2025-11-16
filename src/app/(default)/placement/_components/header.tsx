@@ -1,10 +1,10 @@
 "use client"
 
-import { Logo } from "@/components/logo"
-import { Button } from "@/components/ui/button"
+import { Logo } from "@/components/logo";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { LogOut } from "lucide-react";
-import { useRouter } from "next/navigation"
+import { useRouter } from "next/navigation";
 
 export function Header({ className }: {
   className?: string;
