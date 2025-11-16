@@ -70,5 +70,22 @@
   }
   body {
     @apply bg-background text-foreground;
+    letter-spacing: 1px;
+
+  }
+}
+
+.placement-slider {
+  [data-orientation=horizontal] {
+    @apply bg-red-500;
+  }
+  [role=slider] {
+    @apply bg-white h-6 w-6;
+  }
+}
+
+[role=dialog] {
+  h2 {
+    letter-spacing: 1px;
   }
 }

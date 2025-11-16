@@ -18,8 +18,8 @@ export function Header({ className }: {
         <Logo colored size={40} />
       </div>
       <Button
-        variant="secondary"
-        className="bg-green-700 text-white hover:bg-green-600 transition-all ease-in-out p-2 h-fit w-fit"
+        variant="constructive"
+        className="p-2 h-fit w-fit"
         onClick={() => {
           toast({
             variant: "default",

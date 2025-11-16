@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
-import { Center } from "@/components/center";
-import { Header } from "./header";
+import { Header } from "./_components/header";
 
 export default function Layout({ children }: {
   children: ReactNode;
@@ -11,7 +10,6 @@ export default function Layout({ children }: {
       <div className="flex-grow overflow-y-scroll flex flex-row justify-center m-4">
         {children}
       </div>
-      <div className="" />
     </main>
   )
 }
