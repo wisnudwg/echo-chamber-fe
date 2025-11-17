@@ -9,6 +9,8 @@ export function BinaryAxisMap() {
   const isMobile = useIsMobile();
   const x = usePlacementStore((st) => st.state.x);
   const y = usePlacementStore((st) => st.state.y);
+  const getXLabel = usePlacementStore((st) => st.getXLabel);
+  const getYLabel = usePlacementStore((st) => st.getYLabel);
 
   const normalizedPosition = useMemo(() => {
     return {
@@ -16,21 +18,6 @@ export function BinaryAxisMap() {
       y: (y + 100)/200,
     }
   }, [x, y]);
-
-  const labels = useMemo(() => {
-    let xLabel = "Neutral";
-    let yLabel = "Neutral";
-    
-    if (x > 0) xLabel = "Individual"
-    if (x < 0) xLabel = "Systemic"
-    if (y > 0) yLabel = "Authority"
-    if (y < 0) yLabel = "Fluidity"
-
-    return {
-      x: xLabel,
-      y: yLabel,
-    }
-  }, [x,y]);
 
   const sideLength = useMemo(() => {
     const cellLength = isMobile ? 16 : 24;
@@ -45,8 +32,8 @@ export function BinaryAxisMap() {
     <div className="flex flex-col items-center justify-center gap-4">
       <p className="md:text-lg">
         {"{ "}
-        {labels.x}: <span className="font-medium">{Math.abs(x)}</span>{", "}
-        {labels.y}: <span className="font-medium">{Math.abs(y)}</span>
+        {getXLabel()}: <span className="font-medium">{Math.abs(x)}</span>{", "}
+        {getYLabel()}: <span className="font-medium">{Math.abs(y)}</span>
         {" }"}
       </p>
       <div className="p-2 bg-zinc-300">

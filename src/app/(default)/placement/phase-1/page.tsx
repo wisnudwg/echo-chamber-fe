@@ -1,21 +1,27 @@
 "use client"
 
 import { Center } from "@/components/center"
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { AxisSlider } from "./_components/axis-slider";
 import { NextButton, PrevButton } from "@/components/common-buttons";
 import { BinaryAxisMap } from "./_components/binary-axis-map";
 import { useRouter } from "next/navigation";
+import { usePlacementStore } from "@/stores/placement.store";
 
 export default function Page() {
   const router = useRouter();
+  const getXLabel = usePlacementStore((st) => st.getXLabel);
+  const getYLabel = usePlacementStore((st) => st.getYLabel);
+
   const [step, setStep] = useState(1);
 
   return (
     <Center className="text-white">
 
       <div className="flex flex-col gap-4 items-center justify-center bg-zinc-800 p-4 rounded-md">
-        <h1 className="text-center text-2xl font-semibold">Binary Axis Mapping</h1>
+        <h1 className="text-center text-2xl font-semibold">
+          {step === 3 ? <Fragment>Initial Placement:<br />{getXLabel()} / {getYLabel()}</Fragment> : `Binary Axis Mapping`}
+        </h1>
 
         {/** step-based UI */}
         {step === 1 && <AxisSlider axis="y" />}

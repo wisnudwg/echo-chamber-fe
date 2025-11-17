@@ -7,6 +7,8 @@ export type PlacementState = {
 }
 
 export type PlacementAction = {
+  getXLabel: () => string;
+  getYLabel: () => string;
   setX: (x: number) => void;
   setY: (y: number) => void;
   reset: () => void;
@@ -26,6 +28,16 @@ export const usePlacementStore = create<PlacementStore>()(
     (set, get) => ({
       state: {
         ...iState,
+      },
+      getXLabel: () => {
+        const x = get().state.x;
+        if (x === 0) return "Neutral";
+        return x > 0 ? "Individual" : "Systemic";
+      },
+      getYLabel: () => {
+        const y = get().state.y;
+        if (y === 0) return "Neutral";
+        return y > 0 ? "Authority" : "Fluidity";
       },
       setX: (x) => {
         set({
