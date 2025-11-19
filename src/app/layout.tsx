@@ -7,6 +7,9 @@ import { Provider } from "react-redux";
 import reduxStore from "@/lib/Redux/ReduxStore";
 import { Toaster } from "@/components/ui/toaster";
 import Head from "next/head";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient();
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,18 +34,21 @@ export default function RootLayout({
         <link rel="icon" href="/icon.png" type="image/png" />
       </Head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange>
-          <Provider store={reduxStore}>
-            {/* <Navbar /> */}
-            <div className="">{children}</div>
-            <Toaster />
-          </Provider>
-        </ThemeProvider>
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <QueryClientProvider client={queryClient}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange>
+            <Provider store={reduxStore}>
+              {/* <Navbar /> */}
+              <div className="">{children}</div>
+              <Toaster />
+            </Provider>
+          </ThemeProvider>
+        </QueryClientProvider>
       </body>
     </html>
   );
