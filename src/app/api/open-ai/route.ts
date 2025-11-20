@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { openAI } from "../config";
+import { openAI } from "./config";
 
 export async function POST(req: Request) {
   try {
@@ -21,10 +21,10 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({
-      message: response.choices[0].message.content,
       finishReason: response.choices[0].finish_reason,
+      message: response.choices[0].message,
       tokenUsed: response.usage?.total_tokens,
-    })
+    });
   } catch (error: any) {
     return NextResponse.json(
       { error: error.message },

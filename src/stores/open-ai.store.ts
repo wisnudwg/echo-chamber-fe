@@ -1,17 +1,20 @@
-import { OpenAIChatMessage } from "@/lib/types"
+import { OpenAIChatMessage, OpenAIFinishReason, OpenAITokenUsed } from "@/lib/types"
 import { create } from "zustand"
 import { persist } from "zustand/middleware"
 
 export type OpenAIState = {
-  messages: OpenAIChatMessage[];
+  finishReason: OpenAIFinishReason;
   input: string;
+  messages: OpenAIChatMessage[];
+  tokenUsed: OpenAITokenUsed;
 }
 
 export type OpenAIAction = {
-  addNewMessage: (payload: OpenAIChatMessage) => void;
-  clearInput: () => void;
-  setInput: (payload: string) => void;
-  setMessages: (payload: OpenAIChatMessage[]) => void;
+  setFinishReason: (payload: OpenAIState['finishReason']) => void;
+  setInput: (payload: OpenAIState['input']) => void;
+  setMessages: (payload: OpenAIState['messages']) => void;
+  setTokenUsed: (payload: OpenAIState['tokenUsed']) => void;
+  reset: () => void;
 }
 
 type OpenAIStore = OpenAIAction & {
@@ -19,8 +22,10 @@ type OpenAIStore = OpenAIAction & {
 }
 
 const iState: OpenAIState = {
-  messages: [],
   input: "",
+  finishReason: "stop",
+  messages: [],
+  tokenUsed: 0,
 }
 
 export const useOpenAIStore = create<OpenAIStore>()(
@@ -29,21 +34,13 @@ export const useOpenAIStore = create<OpenAIStore>()(
       state: {
         ...iState,
       },
-      addNewMessage: (payload) => {
+      setFinishReason: (payload) => {
         set({
           state: {
             ...get().state,
-            messages: [...get().state.messages, payload],
+            finishReason: payload,
           },
         });
-      },
-      clearInput: () => {
-        set({
-          state: {
-            ...get().state,
-            input: "",
-          },
-        })
       },
       setInput: (payload) => {
         set({
@@ -58,6 +55,21 @@ export const useOpenAIStore = create<OpenAIStore>()(
           state: {
             ...get().state,
             messages: [...payload],
+          },
+        })
+      },
+      setTokenUsed: (payload) => {
+        set({
+          state: {
+            ...get().state,
+            tokenUsed: payload,
+          },
+        })
+      },
+      reset: () => {
+        set({
+          state: {
+            ...iState,
           },
         })
       },
