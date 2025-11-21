@@ -31,7 +31,7 @@ export function useOpenAI() {
       setMessages([...useOpenAIStore.getState().state.messages, r.message]);
       setTokenUsed(r.tokenUsed);
     },
-    onError: (e: any) => {
+    onError: (e) => {
       console.error(e);
     },
   });

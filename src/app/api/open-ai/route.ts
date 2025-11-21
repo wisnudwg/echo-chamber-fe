@@ -25,9 +25,9 @@ export async function POST(req: Request) {
       message: response.choices[0].message,
       tokenUsed: response.usage?.total_tokens,
     });
-  } catch (error: any) {
+  } catch (error) {
     return NextResponse.json(
-      { error: error.message },
+      { error },
       { status: 500 },
     );
   }

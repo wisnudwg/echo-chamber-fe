@@ -42,7 +42,11 @@ export default function Page() {
         <NextButton
           label={step === 3 ? "Phase 2" : "Next"}
           onClick={() => {
-            step === 3 ? router.push("/placement/phase-2") : setStep((val) => val + 1)
+            if (step === 3) {
+              router.push("/placement/phase-2");
+            } else {
+              setStep((val) => val + 1);
+            }
           }}
         />
       </div>

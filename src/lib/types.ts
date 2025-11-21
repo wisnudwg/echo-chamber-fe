@@ -1,6 +1,6 @@
 import { z } from "zod"
 import { EntryFormSchema, EnlistFormSchema, ForgotAccessKeyFormSchema } from "./zod-schemas"
-import { ChatCompletion, ChatCompletionMessage, ChatCompletionMessageParam, CompletionUsage } from "openai/resources/index.mjs"
+import { ChatCompletion, ChatCompletionMessageParam, CompletionUsage } from "openai/resources/index.mjs"
 
 export type EnlistFormSchemaType = z.infer<typeof EnlistFormSchema>
 
